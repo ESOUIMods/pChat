@@ -1,4 +1,4 @@
-<GuiXml>
+<GuiXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sir.insidi.at/or/schema/esoui.xsd">
 	<Controls>
 		
 		<Button name="pChatAutoMsgTemplateRmv" mouseOverBlendMode="ADD" inherits="ZO_ButtonBehaviorClickSound" virtual="true" hidden="true">
@@ -77,9 +77,6 @@
 		</TopLevelControl>
 		
 		<TopLevelControl name="pChatXMLAutoMsgDialog" inherits="ZO_CustomDialogBase" hidden="true">
-			<OnInitialized>
-				pChat_BuildAutomatedMessagesDialog(self)
-			</OnInitialized>
 			<Controls>
 				<Label name="$(parent)NameHeader" inherits="ZO_DialogContentAnchors" color="INTERFACE_COLOR_TYPE_TEXT_COLORS:INTERFACE_TEXT_COLOR_NORMAL" font="ZoFontGame" text="PCHAT_AUTOMSG_NAME_HEADER"/>
 
