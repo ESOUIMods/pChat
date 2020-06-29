@@ -1,14 +1,13 @@
 local CONSTANTS = pChat.CONSTANTS
 local ADDON_NAME = CONSTANTS.ADDON_NAME
+local ADDON_VERSION			= CONSTANTS.ADDON_VERSION
 
 --AddOn settings constants
 --LibAddonMenu-2.0 panel info constants
-local ADDON_VERSION       = "10.0.0.0"
-local ADDON_AUTHOR        = "Ayantir, DesertDwellers, |cFFFF00Baertram|r, Sirinsidiator"
-local ADDON_WEBSITE       = "http://www.esoui.com/downloads/info93-pChat.html"
-local ADDON_FEEDBACK      = "https://www.esoui.com/forums/private.php?do=newpm&u=2028"
-local ADDON_DONATION      = "https://www.esoui.com/portal.php?id=136&a=faq&faqid=131"
-CONSTANTS[ADDON_VERSION] 	= ADDON_VERSION
+local ADDON_AUTHOR        	= "Ayantir, DesertDwellers, Baertram & Sirinsidiator"
+local ADDON_WEBSITE       	= "http://www.esoui.com/downloads/info93-pChat.html"
+local ADDON_FEEDBACK      	= "https://www.esoui.com/forums/private.php?do=newpm&u=2028"
+local ADDON_DONATION      	= "https://www.esoui.com/portal.php?id=136&a=faq&faqid=131"
 
 --SavedVariables constants
 local ADDON_SV_VERSION    = 0.9 -- ATTENTION: Changing this will reset the SavedVariables!
@@ -153,6 +152,13 @@ function pChat.InitializeSettings()
         addHistoryRestoredPrefix = false,
         -- Not LAM
         chatConfSync = {},
+		--Chat handlers
+		useSystemMessageChatHandler = true,
+		usePlayerStatusChangedChatHandler = true,
+		useIgnoreAddedChatHandler = true,
+		useIgnoreRemovedChatHandler = true,
+		useGroupMemberLeftChatHandler = true,
+		useGroupTypeChangedChatHandler = true,
     }
 
     --Load the nicknames defined in the settings and build the pChatData nicknames table with them
@@ -577,6 +583,76 @@ function pChat.InitializeSettings()
 			name = GetString(PCHAT_MESSAGEOPTIONSH),
 			controls =
 			{
+				-- Chat message handlers
+				{
+					type = "submenu",
+					name = GetString(PCHAT_CHATHANDLERS),
+					controls = {
+						{-- LAM Option enable player status changed chat message handler
+							type = "checkbox",
+							name = GetString(PCHAT_CHATHANDLER_SYSTEMMESSAGES),
+							tooltip = string.format(GetString(PCHAT_CHATHANDLER_TEMPLATETT), GetString(PCHAT_CHATHANDLER_SYSTEMMESSAGES)),
+							getFunc = function() return db.useSystemMessageChatHandler end,
+							setFunc = function(newValue) db.useSystemMessageChatHandler = newValue end,
+							width = "full",
+							requiresReload = true,
+							default = defaults.useSystemMessageChatHandler,
+						},
+						{-- LAM Option enable player status changed chat message handler
+							type = "checkbox",
+							name = GetString(PCHAT_CHATHANDLER_PLAYERSTATUS),
+							tooltip = string.format(GetString(PCHAT_CHATHANDLER_TEMPLATETT), GetString(PCHAT_CHATHANDLER_PLAYERSTATUS)),
+							getFunc = function() return db.usePlayerStatusChangedChatHandler end,
+							setFunc = function(newValue) db.usePlayerStatusChangedChatHandler = newValue end,
+							width = "full",
+							requiresReload = true,
+							default = defaults.usePlayerStatusChangedChatHandler,
+						},
+						{-- LAM Option enable player status changed chat message handler
+							type = "checkbox",
+							name = GetString(PCHAT_CHATHANDLER_IGNORE_ADDED),
+							tooltip = string.format(GetString(PCHAT_CHATHANDLER_TEMPLATETT), GetString(PCHAT_CHATHANDLER_IGNORE_ADDED)),
+							getFunc = function() return db.useIgnoreAddedChatHandler end,
+							setFunc = function(newValue) db.useIgnoreAddedChatHandler = newValue end,
+							width = "full",
+							requiresReload = true,
+							default = defaults.useIgnoreAddedChatHandler,
+						},
+						{-- LAM Option enable player status changed chat message handler
+							type = "checkbox",
+							name = GetString(PCHAT_CHATHANDLER_IGNORE_REMOVED),
+							tooltip = string.format(GetString(PCHAT_CHATHANDLER_TEMPLATETT), GetString(PCHAT_CHATHANDLER_IGNORE_REMOVED)),
+							getFunc = function() return db.useIgnoreRemovedChatHandler end,
+							setFunc = function(newValue) db.useIgnoreRemovedChatHandler = newValue end,
+							width = "full",
+							requiresReload = true,
+							default = defaults.useIgnoreRemovedChatHandler,
+						},
+						{-- LAM Option enable player status changed chat message handler
+							type = "checkbox",
+							name = GetString(PCHAT_CHATHANDLER_GROUP_MEMBER_LEFT),
+							tooltip = string.format(GetString(PCHAT_CHATHANDLER_TEMPLATETT), GetString(PCHAT_CHATHANDLER_GROUP_MEMBER_LEFT)),
+							getFunc = function() return db.useGroupMemberLeftChatHandler end,
+							setFunc = function(newValue) db.useGroupMemberLeftChatHandler = newValue end,
+							width = "full",
+							requiresReload = true,
+							default = defaults.useGroupMemberLeftChatHandler,
+						},
+						{-- LAM Option enable player status changed chat message handler
+							type = "checkbox",
+							name = GetString(PCHAT_CHATHANDLER_GROUP_TYPE_CHANGED),
+							tooltip = string.format(GetString(PCHAT_CHATHANDLER_TEMPLATETT), GetString(PCHAT_CHATHANDLER_GROUP_TYPE_CHANGED)),
+							getFunc = function() return db.useGroupTypeChangedChatHandler end,
+							setFunc = function(newValue) db.useGroupTypeChangedChatHandler = newValue end,
+							width = "full",
+							requiresReload = true,
+							default = defaults.useGroupTypeChangedChatHandler,
+						},
+
+					}, --controls Chat message handlers
+
+				}, --submenu Chat message handlers
+
 				{-- LAM Option Remove Zone Tags
 					type = "checkbox",
 					name = GetString(PCHAT_DELZONETAGS),

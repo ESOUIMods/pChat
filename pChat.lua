@@ -1,7 +1,7 @@
 --=======================================================================================================================================
 --Known problems/bugs:
---Last updated: 2020-06-19
---Total number: 5
+--Last updated: 2020-06-21
+--Total number: 6
 ------------------------------------------------------------------------------------------------------------------------
 --#2	2020-02-28 Baetram, bug: New selection for @accountName/character chat prefix will only show /charactername (@accountName is missing) during whispers,
 --		if clicked on a character in the chat to whisper him/her
@@ -16,30 +16,29 @@
 --After fully restarting game again, setting 9 is coming up as transparency 0, and a few other numbers are out of wack.
 -->Possible cross-addon problem named was: "Social Indicator" with setting "Social indicator on UI" enabled
 ------------------------------------------------------------------------------------------------------------------------
+--#6    2020-06-20 Mikikatze, bug: Setting for automatic selected chat tab does not work
+--I turned off all other addons and libs, same problem. Even when I switch into another chat tab, as soon as I log out
+--and in again it goes back to the first tab, which is zone chat.
+--In settings the 2nd tab ist selected, I double checked.
+------------------------------------------------------------------------------------------------------------------------
+--#7    2020-06-20 Mikikatze, bug: Time stamps are not shown with system messages anymore
+--      TODO: Chat handler for AddSystemMessage needs to be added, but does not work yet!
+
 --=======================================================================================================================================
 
 --=======================================================================================================================================
--- Changelog version: 10.0.0.0 (last version 9.4.1.4)
+-- Changelog version: 10.0.0.1 (last version 10.0.0.0)
 --=======================================================================================================================================
 --Fixed:
---#4 Sound notifications for incoming whispers were not played
---#5 Changing the slider for the chat background "flickers" sometimes (resets the color to black and then to the chosen one)
---Updated and corrected settings menu texts and tooltips
+--Removed debug messages
+--#6 Default chat tab not switching properly
 
 --Changed:
---Cleanup by sirinsidiator: Rewrite of some functions and removed overwritten ZOs function code + split into several files
---Removed redundant/non working/not needed code
---Many code improvements
---Settings menu totally changed to use less space on main menu page but use mroe submenus; moved related settings together into the same submenus
 
 --Added:
---Description and tooltip to eso standard color and pChat color settings menu
---Added chat color darkening/lightening for NON ESO colors as well + added new sliders to change the values
---Added chat channel filter checkboxes to the copy chat dialog
---Added support for /zoneru chat
+-- Added settings for chat format message handlers (group, friends, ignore lists)
 
 --Added on request:
---New setting: Chat channel will be automatically changed to /party if you port/reloadui to/in a dungeon, and if you are grouped. This is a new sub-setting of the "Enable Party Switch" setting.
 --=======================================================================================================================================
 
 --  pChat object
@@ -83,7 +82,7 @@ local function LoadLibraries()
         logger = LibDebugLogger(ADDON_NAME)
         logger:Debug("AddOn loaded")
         logger.verbose = logger:Create("Verbose")
-        logger.verbose:SetEnabled(false)
+        logger.verbose:SetEnabled(true)
         pChat.logger = logger
     end
     --LibChatMessage
@@ -361,9 +360,13 @@ local function OnPlayerActivated()
             --Do some other checks
             DoPostEventPlayerActivatedChecks()
 
+            -- Set default tab at login
+            pChat.SetDefaultTab(db.defaultTab)
+
             pChatData.isAddonInitialized = true
 
             EVENT_MANAGER:UnregisterForEvent(ADDON_NAME, EVENT_PLAYER_ACTIVATED)
+
             logger:Debug("EVENT_PLAYER_ACTIVATED - End: Addon was initialized")
         end
     end
@@ -484,7 +487,8 @@ local function OnAddonLoaded(_, addonName)
         pChat.InitializeChatConfig()
 
         pChat.SpamFilter = pChat.InitializeSpamFilter()
-        local FormatMessage, FormatSysMessage = pChat.InitializeMessageFormatters()
+        --local FormatMessage, FormatSysMessage = pChat.InitializeMessageFormatters()
+        pChat.InitializeMessageFormatters()
 
         --EVENTS--
         -- Because ChatSystem is loaded after EVENT_ADDON_LOADED triggers, we use 1st EVENT_PLAYER_ACTIVATED wich is run bit after
