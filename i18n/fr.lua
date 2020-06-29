@@ -1,10 +1,31 @@
---[[
-Author: Ayantir
-Filename: fr.lua
-Version: 5
-]]--
-
 -- Messages settings
+
+-- New May Need Translations
+	-- ************************************************
+	-- Chat tab selector Bindings
+	-- ************************************************
+SafeAddString(PCHAT_Tab1										,"Select Chat Tab 1",1)
+SafeAddString(PCHAT_Tab2										,"Select Chat Tab 2",1)
+SafeAddString(PCHAT_Tab3										,"Select Chat Tab 3",1)
+SafeAddString(PCHAT_Tab4										,"Select Chat Tab 4",1)
+SafeAddString(PCHAT_Tab5										,"Select Chat Tab 5",1)
+SafeAddString(PCHAT_Tab6										,"Select Chat Tab 6",1)
+SafeAddString(PCHAT_Tab7										,"Select Chat Tab 7",1)
+SafeAddString(PCHAT_Tab8										,"Select Chat Tab 8",1)
+SafeAddString(PCHAT_Tab9										,"Select Chat Tab 9",1)
+SafeAddString(PCHAT_Tab10										,"Select Chat Tab 10",1)
+SafeAddString(PCHAT_Tab11										,"Select Chat Tab 11",1)
+SafeAddString(PCHAT_Tab12										,"Select Chat Tab 12",1)
+	-- 9.3.6.24 Additions
+SafeAddString(PCHAT_PCHAT_CHATTABH										,"Chat Tab Settings",1)
+SafeAddString(PCHAT_enableChatTabChannel						,"Enable Chat Tab Last Used Channel",1)
+SafeAddString(PCHAT_enableChatTabChannelT						,"Enable chat tabs to remember the last used channel, it will become the default until you opt to use a different one in that tab.",1)
+SafeAddString(PCHAT_enableWhisperTab							,"Enable Redirect Whisper",1)
+SafeAddString(PCHAT_enableWhisperTabT							,"Enable Redirect Whisper to a specific tab.",1)
+	
+
+
+-- New Need Translations
 
 SafeAddString(PCHAT_OPTIONSH											, "Personnalisation des discussions", 1)
 					
@@ -106,11 +127,7 @@ SafeAddString(PCHAT_GROUPLEADERCOLOR1TT							, "Couleur des messages du chef de
 SafeAddString(PCHAT_GROUPNAMES										, "Format des noms pour le groupe", 1)
 SafeAddString(PCHAT_GROUPNAMESTT										, "Format des noms des membres de votre groupe sur le canal groupe", 1)
 								
-SafeAddString(PCHAT_GROUPNAMESCHOICE1								, "@UserID", 1)
-SafeAddString(PCHAT_GROUPNAMESCHOICE2								, "Nom du personnage", 1)
-SafeAddString(PCHAT_GROUPNAMESCHOICE3								, "Nom du personnage@UserID", 1)
-								
--- Sync settings			
+-- Sync settings
 			
 SafeAddString(PCHAT_SYNCH												, "Synchronisation des paramètres", 1)
 			
@@ -146,7 +163,7 @@ SafeAddString(PCHAT_TABWARNINGTT										, "Définir la couleur de l'avertissem
 			
 SafeAddString(PCHAT_IMH													, "Chuchotements", 1)
 			
-SafeAddString(PCHAT_SOUNDFORINCWHISPS								, "Son pour les chuchotements reçus", 1)
+SafeAddString(PCHAT_SOUNDFORINCWHISPS								, "Son pour chuchotem. reçus", 1)
 SafeAddString(PCHAT_SOUNDFORINCWHISPSTT							, "Choisir le son qui sera joué lors des chuchotements reçus", 1)
 			
 SafeAddString(PCHAT_SOUNDFORINCWHISPSCHOICE1						, "Aucun", 1)
@@ -253,15 +270,16 @@ SafeAddString(PCHAT_NAMEFORMATTT										, "Sélectionnez de quelle manière so
 SafeAddString(PCHAT_FORMATCHOICE1									, "@UserID", 1)
 SafeAddString(PCHAT_FORMATCHOICE2									, "Nom du personnage", 1)
 SafeAddString(PCHAT_FORMATCHOICE3									, "Nom du personnage@UserID", 1)
-							
-SafeAddString(PCHAT_SETCOLORSFORTT									, "Définir les couleurs pour les membres de ", 1)
-SafeAddString(PCHAT_SETCOLORSFORCHATTT								, "Définir les couleurs pour les messages de ", 1)
+SafeAddString(PCHAT_FORMATCHOICE4									, "@UserID/Nom du personnage", 1)
 
-SafeAddString(PCHAT_SETCOLORSFOROFFICIERSTT						, "Définir les couleurs pour les membres du canal Officier de ", 1)
-SafeAddString(PCHAT_SETCOLORSFOROFFICIERSCHATTT					, "Définir les couleurs pour les messages du canal Officier de ", 1)
+SafeAddString(PCHAT_SETCOLORSFORTT									, "Définir les couleurs pour les membres de <<1>>", 1)
+SafeAddString(PCHAT_SETCOLORSFORCHATTT								, "Définir les couleurs pour les messages de <<1>>", 1)
 
-SafeAddString(PCHAT_MEMBERS											, " - Joueurs", 1)
-SafeAddString(PCHAT_CHAT												, " - Messages", 1)
+SafeAddString(PCHAT_SETCOLORSFOROFFICIERSTT						, "Définir les couleurs pour les membres du canal Officier de <<1>>", 1)
+SafeAddString(PCHAT_SETCOLORSFOROFFICIERSCHATTT					, "Définir les couleurs pour les messages du canal Officier de <<1>>", 1)
+
+SafeAddString(PCHAT_MEMBERS											, "<<1>> - Joueurs", 1)
+SafeAddString(PCHAT_CHAT												, "<<1>> - Messages", 1)
 									
 SafeAddString(PCHAT_OFFICERSTT										, " Officiers", 1)
 									
@@ -405,3 +423,7 @@ SafeAddString(PCHAT_SI_BINDING_NAME_PCHAT_SHOW_AUTO_MSG		, "Messages automatique
 SafeAddString(PCHAT_PCHAT_AUTOMSG_REMOVE_AUTO_MSG				, "Supprimer", 1)
 
 SafeAddString(PCHAT_CLEARBUFFER										, "Effacer le chat", 1)
+
+--Added by Baertram
+SafeAddString(PCHAT_LIB_MISSING                             , "[pChat] La bibliothèque suivante est manquante et doit être installée & activée: \'%s\'", 1)
+SafeAddString(PCHAT_LUAERROR                                , "[pChat] A déclenché 10 lignes condensées avec le texte=%s - pChat - Message tronqué", 1)

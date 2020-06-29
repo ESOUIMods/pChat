@@ -1,11 +1,31 @@
---[[
-Author: Ayantir
-Filename: en.lua
-Version: 5
-]]--
-
 -- Messages settings
 local strings = {
+-- New May Need Translations
+	-- ************************************************
+	-- Chat tab selector Bindings
+	-- ************************************************
+	PCHAT_Tab1 = "Select Chat Tab 1",
+	PCHAT_Tab2 = "Select Chat Tab 2",
+	PCHAT_Tab3 = "Select Chat Tab 3",
+	PCHAT_Tab4 = "Select Chat Tab 4",
+	PCHAT_Tab5 = "Select Chat Tab 5",
+	PCHAT_Tab6 = "Select Chat Tab 6",
+	PCHAT_Tab7 = "Select Chat Tab 7",
+	PCHAT_Tab8 = "Select Chat Tab 8",
+	PCHAT_Tab9 = "Select Chat Tab 9",
+	PCHAT_Tab10 = "Select Chat Tab 10",
+	PCHAT_Tab11 = "Select Chat Tab 11",
+	PCHAT_Tab12 = "Select Chat Tab 12",
+	-- 9.3.6.24 Additions
+	PCHAT_CHATTABH = "Chat Tab Settings",
+	PCHAT_enableChatTabChannel = "Enable Last Used Channel Per Tab",
+	PCHAT_enableChatTabChannelT = "Enable chat tabs to remember the last used channel, it will become the default until you opt to use a different one in that tab.",
+	PCHAT_enableWhisperTab = "Enable Whisper Redirect",
+	PCHAT_enableWhisperTabT = "Enable redirect your whispers to a specific tab.",
+	
+-- New Need Translations
+
+
 	PCHAT_OPTIONSH = "Messages Settings",
 
 	PCHAT_GUILDNUMBERS = "Guild numbers",
@@ -106,10 +126,6 @@ local strings = {
 	PCHAT_GROUPNAMES = "Names format for groups",
 	PCHAT_GROUPNAMESTT = "Format of your groupmates names in party channel",
 
-	PCHAT_GROUPNAMESCHOICE1 = "@UserID",
-	PCHAT_GROUPNAMESCHOICE2 = "Character Name",
-	PCHAT_GROUPNAMESCHOICE3 = "Character Name@UserID",
-
 	-- Sync settings
 
 	PCHAT_SYNCH = "Syncing settings",
@@ -144,9 +160,9 @@ local strings = {
 
 	-- Whisper settings
 
-	PCHAT_IMH = "Whisps",
+	PCHAT_IMH = "Whispers",
 
-	PCHAT_SOUNDFORINCWHISPS = "Sound for incoming whisps",
+	PCHAT_SOUNDFORINCWHISPS = "Sound for inc. whisps",
 	PCHAT_SOUNDFORINCWHISPSTT = "Choose sound wich will be played when you receive a whisp",
 
 	PCHAT_NOTIFYIM = "Visual notification",
@@ -184,6 +200,9 @@ local strings = {
 
 	PCHAT_RESTOREWHISPS = "Restore Whispers",
 	PCHAT_RESTOREWHISPSTT = "Restore whispers sent and received after logoff, disconnect or quit. Whispers are always restored after a ReloadUI()",
+
+	PCHAT_RESTOREWHISPS_NO_NOTIFY = "No whisper notification on restore",
+	PCHAT_RESTOREWHISPS_NO_NOTIFY_TT = "Do not show the whisper notifications, and do not color the chat tab for restored whisper messages.\nCan only be enabled if the whisper notifications are enabled.",
 
 	PCHAT_RESTORETEXTENTRYHISTORYATLOGOUTQUIT  = "Restore Text entry history",
 	PCHAT_RESTORETEXTENTRYHISTORYATLOGOUTQUITTT  = "Restore Text entry history available with arrow keys after logoff, disconnect or quit. History of text entry is always restored after a ReloadUI()",
@@ -250,6 +269,7 @@ local strings = {
 	PCHAT_FORMATCHOICE1 = "@UserID",
 	PCHAT_FORMATCHOICE2 = "Character Name",
 	PCHAT_FORMATCHOICE3 = "Character Name@UserID",
+	PCHAT_FORMATCHOICE4 = "@UserID/Character Name",
 
 	PCHAT_SETCOLORSFORTT = "Set colors for members of <<1>>",
 	PCHAT_SETCOLORSFORCHATTT = "Set colors for messages of <<1>>",
@@ -402,6 +422,15 @@ local strings = {
 	PCHAT_PCHAT_AUTOMSG_REMOVE_AUTO_MSG = "Remove",
 
 	PCHAT_CLEARBUFFER = "Clear chat",
+
+
+	--Added by Baertram
+	PCHAT_LIB_MISSING       = "[pChat] The following library is missing and needs to be installed & enabled: \'%s\'",
+	PCHAT_LUAERROR = "[pChat] has triggered 10 packed lines with text=%s -- pChat - Message truncated",
+
+	PCHAT_RESTORED_PREFIX = "[H]",
+	PCHAT_RESTOREPREFIX = "Add prefix to restored messages",
+	PCHAT_RESTOREPREFIXTT = "Add a prefix \'[H]\' to restored messages in order to easily see they were restored.\nThis will affect the current chat only after a reloadUI!\nThe color of the prefix will be shown with the standard ESO chat channel colors."
 }
 
 for stringId, stringValue in pairs(strings) do

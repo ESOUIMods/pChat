@@ -1,12 +1,3 @@
---[[
-Author: Ayantir
-Filename: es.lua
-Version: 5
-
-Many Thanks to Toperharrier for his original work
-
-]]--
-
 -- Vars with -H are headers, -TT are tooltips
 --[[
 pChat.lang.optionsH = "Opciones"
